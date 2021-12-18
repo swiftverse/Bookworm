@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24251D3B276C832000725354 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24251D3A276C832000725354 /* DetailView.swift */; };
 		2437A1C22768A34400A943AB /* BookwormApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2437A1C12768A34400A943AB /* BookwormApp.swift */; };
 		2437A1C42768A34400A943AB /* Bookworm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2437A1C32768A34400A943AB /* Bookworm.swift */; };
 		2437A1C62768A34500A943AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2437A1C52768A34500A943AB /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24251D3A276C832000725354 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		2437A1BE2768A34400A943AB /* Bookworm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookworm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2437A1C12768A34400A943AB /* BookwormApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookwormApp.swift; sourceTree = "<group>"; };
 		2437A1C32768A34400A943AB /* Bookworm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookworm.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				2488F1622769D38A00781DF5 /* AddBookView.swift */,
 				249CC90D2769F11600CBC4A5 /* RatingView.swift */,
 				249CC90F276A04E000CBC4A5 /* EmojiRatingView.swift */,
+				24251D3A276C832000725354 /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24251D3B276C832000725354 /* DetailView.swift in Sources */,
 				2437A1C42768A34400A943AB /* Bookworm.swift in Sources */,
 				2437A1D32768BF1C00A943AB /* DataController.swift in Sources */,
 				249CC910276A04E000CBC4A5 /* EmojiRatingView.swift in Sources */,

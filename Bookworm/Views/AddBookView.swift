@@ -17,6 +17,13 @@ struct AddBookView: View {
     @State private var genre = ""
    
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
+    
+    var hasValidEntry: Bool {
+        if(authorName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || bookTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || genre.isEmpty) {
+            return false
+        }
+        return true
+    }
     var body: some View {
         NavigationView {
             Form {
@@ -53,11 +60,14 @@ struct AddBookView: View {
                         books.genre = genre
                         books.rating = Int16(rating)
                         books.review = review
+                        books.date = Date.now
                         
                         try? moc.save()
                         dismiss()
                     }
                 }
+                //here we need to equate it with false value to make it work 
+                .disabled(hasValidEntry == false)
             }
             .navigationTitle("Add Book")
         }

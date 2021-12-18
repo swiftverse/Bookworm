@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct Bookworm: View {
-    @FetchRequest(sortDescriptors: []) var books: FetchedResults<Book>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.title), SortDescriptor(\.author)]) var books: FetchedResults<Book>
     @State private var showAddBook = false
     @Environment(\.managedObjectContext) var moc
 
@@ -19,7 +19,8 @@ struct Bookworm: View {
                 ForEach(books) {
                     book in
                     NavigationLink {
-                        Text(book.title ?? "unknnown")
+                            DetailView(book: book)
+                        
                     }
                     
                 label: {
@@ -28,8 +29,15 @@ struct Bookworm: View {
                             .font(.largeTitle)
                         
                         VStack(alignment: .leading) {
-                                            Text(book.title ?? "Unknown Title")
-                                                .font(.headline)
+                            if(book.rating > 1){
+                                Text(book.title ?? "Unknown Title")
+                                    .font(.headline)
+                            } else {
+                                Text(book.title ?? "Unknown Title")
+                                    .font(.headline)
+                                    .foregroundColor(.red)
+                            }
+                                           
                                             Text(book.author ?? "Unknown Author")
                                                 .foregroundColor(.secondary)
                                         }
@@ -38,13 +46,8 @@ struct Bookworm: View {
                     }
                 }
                 }
+                .onDelete(perform: removeBook)
             }
-            
-            
-            
-            
-            
-            
             
                 .navigationTitle("Book Worm")
         .toolbar {
@@ -57,11 +60,24 @@ struct Bookworm: View {
             }
             }
             
+            ToolbarItem(placement: .navigationBarLeading) {
+                EditButton()
+            }
+            
         }
         .sheet(isPresented: $showAddBook, onDismiss: .none) {
             AddBookView()
+            }
         }
-}
+        
+    }
+    
+    func removeBook(at offsets: IndexSet) {
+        for offset in offsets {
+            let book = books[offset]
+            moc.delete(book)
+        }
+        try? moc.save()
     }
     
 }
